@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 /**
  * navbar toggle
  */
@@ -14,10 +12,14 @@ const overlay = document.querySelector("[data-overlay]");
 const elemArr = [navCloseBtn, overlay, navOpenBtn];
 
 for (let i = 0; i < elemArr.length; i++) {
-  elemArr[i].addEventListener("click", function () {
-    navbar.classList.toggle("active");
-    overlay.classList.toggle("active");
-  });
+  elemArr[i].addEventListener("click", toggleNavbar);
+  // Add touch event for mobile devices
+  elemArr[i].addEventListener("touchstart", toggleNavbar);
+}
+
+function toggleNavbar() {
+  navbar.classList.toggle("active");
+  overlay.classList.toggle("active");
 }
 
 /**
@@ -27,15 +29,10 @@ for (let i = 0; i < elemArr.length; i++) {
 const navbarLinks = document.querySelectorAll("[data-navbar-link]");
 
 for (let i = 0; i < navbarLinks.length; i++) {
-  navbarLinks[i].addEventListener("click", function () {
-    navbar.classList.toggle("active");
-    overlay.classList.toggle("active");
-  });
+  navbarLinks[i].addEventListener("click", toggleNavbar);
+  // Add touch event for mobile devices
+  navbarLinks[i].addEventListener("touchstart", toggleNavbar);
 }
-
-
-
-
 
 /**
  * header & go-top-btn active
